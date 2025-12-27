@@ -5,10 +5,25 @@
 // It should also have a method named `is_available` that returns a `true` if the quantity is
 // greater than 0, otherwise `false`.
 
+struct Order{
+    price:i32,
+    quantity:i32,
+
+}
+impl Order{
+    fn is_available(&self)->bool{
+        if self.quantity>0 {
+            return true;
+        }
+        false
+    }
+}
+
+
 #[cfg(test)]
 mod tests {
     use super::*;
-
+    
     #[test]
     fn test_order_is_available() {
         let order = Order {

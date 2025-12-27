@@ -10,6 +10,15 @@
 //
 // Use only what you learned! No loops yet, so you'll have to use recursion!
 
+fn factorial(sum:u32)->u32{
+    
+    if sum==0||sum==1{
+        return 1;
+    }
+    factorial(sum-1)*sum
+    
+}
+
 #[cfg(test)]
 mod tests {
     use crate::factorial;

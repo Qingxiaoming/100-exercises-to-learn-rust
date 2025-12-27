@@ -12,6 +12,44 @@
 // interested in learning more about it.
 // You don't have to though: it's perfectly okay to write three separate
 // implementations manually. Venture further only if you're curious.
+trait Power<Exp>{
+    fn power(&self,exp:Exp)->u32;
+}
+impl Power<u16> for u32{
+    fn power(&self,exp:u16)->u32{
+        self.pow(exp.into())
+    }
+}
+impl Power<u32> for u32{
+    fn power(&self,exp:u32)->u32{
+        self.pow(exp.into())
+    }
+}
+impl Power<&u32> for u32{
+    fn power(&self,exp:&u32)->u32{
+        self.pow(*exp)
+    }
+}
+
+
+ /*
+pub trait Power<Exp> {
+    fn power(&self, exp: Exp) -> u32;
+}
+
+// 一条宏，把 u16、u32、&u32 全部枚举掉
+macro_rules! impl_power {
+    ($($exp:ty),*) => { $(
+        impl Power<$exp> for u32 {
+            fn power(&self, exp: $exp) -> u32 {
+                self.pow(exp as u32)   // &u32 也能 as u32
+            }
+        }
+    )* };
+}
+
+impl_power!(u16, u32, &u32);*/
+
 
 #[cfg(test)]
 mod tests {
